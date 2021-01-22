@@ -1,4 +1,5 @@
 # discordjs-ticket-bot
+Open source discord.js ticket bot with reactions.
 You have to use 12.5.0+ Discord.js version!
 # Setup:
 1. Open a terminal that points to your folder
