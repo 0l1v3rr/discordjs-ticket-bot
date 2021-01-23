@@ -49,7 +49,7 @@ bot.on('messageReactionAdd', async (reaction, user) => {
     }
     
 
-    if (reaction.message.channel.name.includes("ticket-") || reaction.emoji.name === "🔒") {
+    if (reaction.message.channel.name.includes("ticket-") && reaction.emoji.name === "🔒") {
         reaction.message.channel.delete();
     }
 });
