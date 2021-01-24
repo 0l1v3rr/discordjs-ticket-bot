@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client({ partials: ["MESSAGE", "USER", "REACTION"]});
 
-bot.on("ready", async => {
+bot.on("ready", async () => {
     console.log('The bot is active.');
     bot.user.setActivity('!createticket', {type: 'LISTENING'});
 });
