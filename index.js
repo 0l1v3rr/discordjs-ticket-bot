@@ -27,19 +27,21 @@ bot.on('messageReactionAdd', async (reaction, user) => {
             return;
         }
         reaction.message.guild.channels.create(`ticket-${user.username}`, {
-            type: "text",
-            permissionOverwrites: [
+            type: "text"
+        }).then((channel) => {
+            const categoryId = "category-id"; //The ticket-channels category goes here.
+            channel.overwritePermissions([
                 {
-                    id: reaction.message.guild.roles.everyone,
-                    deny: ["VIEW_CHANNEL", "READ_MESSAGE_HISTORY"],
+                    id: 'everyone-id', //everyone id goes here
+                    allow: [],
+                    deny: ["VIEW_CHANNEL"]
                 },
                 {
                     id: user.id,
-                    allow: ["SEND_MESSAGES", "VIEW_CHANNEL"]
+                    allow: ["SEND_MESSAGES", "VIEW_CHANNEL", "ATTACH_FILES"],
+                    deny: []
                 }
-            ],
-        }).then((channel) => {
-            const categoryId = "category-id"; //The ticket-channels category goes here.
+            ]);
             channel.setParent(categoryId);
             channel.send(`<@${user.id}>`);
             channel.send(ticketembed).then((msg) => {
